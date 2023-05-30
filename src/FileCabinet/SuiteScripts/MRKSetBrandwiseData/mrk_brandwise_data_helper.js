@@ -1,14 +1,15 @@
 /**
  * @NApiVersion 2.1
  */
-define(['N/log', 'N/record', 'N/runtime', 'N/search'],
+define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format'],
     /**
      * @param{log} log
      * @param{record} record
      * @param{runtime} runtime
      * @param{search} search
+     * @param{format} format
      */
-    (log, record, runtime, search) => {
+    (log, record, runtime, search, format) => {
         let scriptParams = {};
 
         const CONSTANTS = {
@@ -79,7 +80,8 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search'],
                             log.debug('setBrandwiseOrderFields', 'cancelDateToSet: ' + cancelDateToSet);
 
                             if (!!cancelDateToSet) {
-                                tranRecord.setValue(CONSTANTS.FIELDS.CANCELDATE, cancelDateToSet);
+                                
+                                tranRecord.setValue(CONSTANTS.FIELDS.CANCELDATE, format.parse({value:cancelDateToSet, type: format.Type.DATE}));
                             }
                         }
                         // Set 9.5% Shipping Cost of Total
@@ -102,8 +104,9 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search'],
             calculateCancelDate: (orderDate) => {
                 try {
                     const currentDate = new Date(orderDate);
-                    const dateToSet = new Date(currentDate.getTime() + (12 * 24 * 60 * 60 * 1000));
-                    return dateToSet;
+                    //const dateToSet = new Date(currentDate.getTime() + (12 * 24 * 60 * 60 * 1000));
+                    currentDate.setDate(currentDate.getDate() + 12);
+                    return currentDate;
                 }
                 catch (e) {
                     log.error('calculateCancelDate Exception', e);

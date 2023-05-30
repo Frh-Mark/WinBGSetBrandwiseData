@@ -12,7 +12,7 @@
       */
      const afterSubmit = (scriptContext) => {
         try {
-            if (scriptContext.type === scriptContext.UserEventType.CREATE) {
+            if (scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.EDIT) {
                 HELPER.HELPERS.setBrandwiseOrderFields(scriptContext);
             }
         }
