@@ -70,8 +70,8 @@
       <allpartners>F</allpartners>
       <allroles>T</allroles>
       <audslctrole></audslctrole>
-      <custscript_mrk_brandwise_subsidiary>[ACCOUNT_SPECIFIC_VALUE]</custscript_mrk_brandwise_subsidiary>
-      <custscript_mrk_brndwise_class>[ACCOUNT_SPECIFIC_VALUE]</custscript_mrk_brndwise_class>
+      <custscript_mrk_brandwise_subsidiary></custscript_mrk_brandwise_subsidiary>
+      <custscript_mrk_brndwise_class></custscript_mrk_brndwise_class>
       <eventtype></eventtype>
       <executioncontext>ACTION|ADVANCEDREVREC|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CONSOLRATEADJUSTOR|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OTHER|PAYMENTGATEWAY|PAYMENTPOSTBACK|PLATFORMEXTENSION|PORTLET|PROMOTIONS|RECORDACTION|RESTLET|RESTWEBSERVICES|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WEBSERVICES|WORKBOOKBUILDER|WORKFLOW</executioncontext>
       <isdeployed>T</isdeployed>
