@@ -15,7 +15,7 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format'],
         const CONSTANTS = {
             FIELDS: {
                 CANCELDATE: 'custbody_canc_by_ship_date',
-                ORDERDATE: 'createddate',
+                SHIPDATE: 'shipdate',
                 TOTAL: 'total',
                 SHIPPINGCOST: 'shippingcost',
                 SHIPMETHOD: 'shipmethod',
@@ -75,8 +75,8 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format'],
                         let shipMethod = tranRecord.getValue(CONSTANTS.FIELDS.SHIPMETHOD);
                         // Set Cancel Date if empty
                         if (!cancelDate) {
-                            let orderDate = tranRecord.getValue(CONSTANTS.FIELDS.ORDERDATE);
-                            let cancelDateToSet = HELPERS.calculateCancelDate(orderDate);
+                            let shipDate = tranRecord.getValue(CONSTANTS.FIELDS.SHIPDATE);
+                            let cancelDateToSet = HELPERS.calculateCancelDate(shipDate);
                             log.debug('setBrandwiseOrderFields', 'cancelDateToSet: ' + cancelDateToSet);
 
                             if (!!cancelDateToSet) {
@@ -101,11 +101,10 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format'],
                     log.error('setBrandwiseOrderFields Excpetion', e);
                 }
             },
-            calculateCancelDate: (orderDate) => {
+            calculateCancelDate: (shipDate) => {
                 try {
-                    const currentDate = new Date(orderDate);
-                    //const dateToSet = new Date(currentDate.getTime() + (12 * 24 * 60 * 60 * 1000));
-                    currentDate.setDate(currentDate.getDate() + 12);
+                    const currentDate = new Date(shipDate);
+                    currentDate.setDate(currentDate.getDate() + 10);
                     return currentDate;
                 }
                 catch (e) {
